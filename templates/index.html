@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Contact List</h1>
+    <ul>
+        {% for contact in contacts %}
+            <li>{{ contact.name }} {{ contact.phone }} - {{ contact.email }}</li>
+        {% endfor %}
+    </ul>
+    <!-- {% if contatcs %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for contact in contacts %}
+                <tr>
+                    <td>{{ contact.id }}</td>
+                    <td>{{ contact.name }}</td>
+                    <td>{{ contact.phone }}</td>
+                    <td>{{ contact.email }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No contacts found!</p>
+    {% endif %} -->
+
+    <a href="/add">Add New Contact</a>
+
+
+</body>
+</html>
