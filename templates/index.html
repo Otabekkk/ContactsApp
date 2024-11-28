@@ -10,21 +10,30 @@
 <body>
     <button class="btn_add_contact" onclick="window.location.href='{{ url_for('add_contact') }}'">Создать контакт</button>
     <div class="contacts_container">
-        <h1>Contacts List</h1>
+        <h1>Список контактов:</h1>
 
         {% for contact in contacts %}
         <div class="contact">
             <h2>{{ contact.name }}</h2>
-            <p><strong>Номер телефона:</strong> {{ contact.phone }}</p>
-            <p><strong>Email:</strong> {{ contact.email }}</p>
+            <p>Номер телефона: <strong>{{ contact.phone }}</strong></p>
+            <p>Email: <strong>{{ contact.email }}</strong></p>
              
             <div class="actions">
                 <button class="edit_btn" onclick="window.location.href='{{ url_for('edit_contact', contact_id = contact.id) }}'">Редактировать</button>
-                <button class="delete_btn" onclick="confirmDelete({{ contact.id }})">Удалить</button>
+                <button class="delete_btn" onclick="openModal({{ contact.id }})">Удалить</button>
                 <!-- <button class="delete_btn" onclick="window.location.href='{{ url_for('delete_contact', contact_id = contact.id) }}'">Удалить</button> -->
             </div>
         </div>
         {% endfor %}
+    </div>
+
+    <div class="confirm_delete" id="confirm">
+        <div class="content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Вы правда хотите удалить контакт?</h2>
+            <button id="confirmDeleteBtn">Удалить</button>
+            <button onclick="closeModal()">Отмена!</button>
+        </div>
     </div>
 
 </body>
