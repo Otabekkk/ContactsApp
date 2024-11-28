@@ -9,6 +9,21 @@
 </head>
 <body>
     <button class="btn_add_contact" onclick="window.location.href='{{ url_for('add_contact') }}'">Создать контакт</button>
+    <form method="GET" action="/search">
+        <input class="search_contact" type="text" name="query" placeholder="Поиск..." required>
+        <button class="search_contact_btn" type="submit">Поиск</button>
+    </form>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    
     <div class="contacts_container">
         <h1>Список контактов:</h1>
 

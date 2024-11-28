@@ -1,12 +1,12 @@
-from flask import render_template, Flask, request, url_for, redirect
-
+from flask import render_template, Flask, request, url_for, redirect, flash
+import secrets
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'your_postgre'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'your_postgre' 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
+app.secret_key = secrets.token_hex(16)
 
 db = SQLAlchemy()
 db.init_app(app)
@@ -21,6 +21,17 @@ class Contact(db.Model):
 @app.route('/')
 def index():
     contacts = Contact.query.all()
+    return render_template('index.html', contacts = contacts)
+
+
+@app.route('/search', methods = ['GET'])
+def search():
+    query = request.args.get('query')
+    contacts = Contact.query.filter(Contact.name.ilike(f'%{query}%')).all()
+    if not contacts:
+        flash('Не удалось найти контакт!', 'Ошибка!')
+        return redirect(url_for('index'))
+    
     return render_template('index.html', contacts = contacts)
 
 

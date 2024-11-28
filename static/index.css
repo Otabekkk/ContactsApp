@@ -1,27 +1,12 @@
-.btn_add_contact {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #4caf50;
-    width: 100px;
-    height: 45px;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    z-index: 10;
-}
-
-.btn_add_contact:hover{
-    background-color: #45a049;
+html, body {
+    overflow-x: hidden;
 }
 
 body {
     background-color: #87cefa;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -100,6 +85,26 @@ h1 {
     background-color: #45a049;
 }
 
+.btn_add_contact {
+    position: fixed;
+    top: 20px;
+    left: 90%;
+    transform: translateX(-50%);
+    background-color: #4caf50;
+    width: 100px;
+    height: 45px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 10;
+}
+
+.btn_add_contact:hover{
+    background-color: #45a049;
+}
+
 
 .confirm_delete {
     display: none;
@@ -128,7 +133,7 @@ h1 {
 }
 
 .confirm_delete button {
-    background-color: #4CAF50;
+    background-color: #e61919;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -142,7 +147,7 @@ h1 {
 }
 
 .confirm_delete button:hover {
-    background-color: #45a049;
+    background-color: #860317;
 }
 
 
@@ -173,3 +178,62 @@ h1 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #0d2172;
 }
+
+
+.search_contact {
+    background-color: ghostwhite;
+    width: 400px;
+    height: 45px;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    /* z-index: 10; */
+}
+
+
+.search_contact_btn {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.flash-messages {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+}
+
+
+.flash {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 10px;
+    border-radius: 5px;
+    color: #B22222;
+    margin: 10px 0;
+}
+/* 
+.flash.error {
+    background-color: #f44336;
+}
+
+
+.flash.success {
+    background-color: #4CAF50;
+}
+
+
+.flash.warning {
+    background-color: #ff9800;
+} */
