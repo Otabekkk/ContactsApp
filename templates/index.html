@@ -3,43 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
     <title>Document</title>
 </head>
 <body>
-    
-    <h1>Contact List</h1>
-    <ul>
+    <button class="btn_add_contact" onclick="window.location.href='{{ url_for('add_contact') }}'">Создать контакт</button>
+    <div class="contacts_container">
+        <h1>Contacts List</h1>
+
         {% for contact in contacts %}
-            <li>{{ contact.name }} {{ contact.phone }} - {{ contact.email }}</li>
+        <div class="contact">
+            <h2>{{ contact.name }}</h2>
+            <p><strong>Номер телефона:</strong> {{ contact.phone }}</p>
+            <p><strong>Email:</strong> {{ contact.email }}</p>
+             
+            <div class="actions">
+                <button onclick="window.location.href='{{ url_for('edit_contact', contact_id = contact.id) }}'">Редактировать</button>
+                <button onclick="window.location.href='{{ url_for('delete_contact', contact_id = contact.id) }}'">Удалить</button>
+            </div>
+            <!-- <ul>
+                <li>{{ contact.name }} {{ contact.phone }} - {{ contact.email }}</li>
+            </ul> -->
+
+        </div>
         {% endfor %}
-    </ul>
-    <!-- {% if contatcs %}
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for contact in contacts %}
-                <tr>
-                    <td>{{ contact.id }}</td>
-                    <td>{{ contact.name }}</td>
-                    <td>{{ contact.phone }}</td>
-                    <td>{{ contact.email }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p>No contacts found!</p>
-    {% endif %} -->
-
-    <a href="/add">Add New Contact</a>
-
+    </div>
 
 </body>
 </html>

@@ -25,7 +25,6 @@ def index():
     return render_template('index.html', contacts = contacts)
 
 
-
 @app.route('/add', methods = ['GET', 'POST'])
 def add_contact():
     if request.method  == 'POST':
@@ -40,6 +39,28 @@ def add_contact():
         return redirect('/')
     
     return render_template('add.html')
+
+
+@app.route('/delete/<contact_id>')
+def delete_contact(contact_id):
+    contact = Contact.query.get_or_404(contact_id)
+    db.session.delete(contact)
+    db.session.commit()
+    return redirect(url_for('index')) 
+
+
+@app.route('/edit/<int:contact_id>', methods = ['GET', 'POST'])
+def edit_contact(contact_id):
+    contact = Contact.query.get_or_404(contact_id)
+    if request.method == 'POST':
+        contact.name = request.form['name']
+        contact.phone = request.form['phone']
+        contact.email = request.form['email']
+        db.session.commit()
+        return redirect(url_for('index'))
+    
+    return render_template('edit.html', contact = contact)
+
 
 if __name__ == '__main__':
     with app.app_context():

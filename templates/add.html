@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>Document</title>
 </head>
 <body>
-    <h1>Добавить новый контакт</h1>
-    <form action="/add" method="POST">
-        <label for="name">Имя:</label>
-        <input type="text" id="name" name="name" required><br>
+    
+    <div class="add_contact">
+        <h1>Добавить новый контакт</h1>
+        <form action="/add" method="POST">
+            <input type="text" id="name" name="name" required placeholder="Имя..."><br>
 
-        <label for="phone">Номер:</label>
-        <input type="text" id="phone" name="phone" required><br>
+            <input type="text" id="phone" name="phone" required placeholder="Номер..."><br>
 
-        <label for="email">Email:</label>
-        <input type="text" id="email" name="email" required><br>
+            <input type="text" id="email" name="email" required placeholder="Email..."><br>
 
-        <button type="submit">Добавить контакт</button>
-    </form>
+            <button type="submit">Добавить контакт</button>
+        </form>
+    </div>
 </body>
 </html>
