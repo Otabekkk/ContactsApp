@@ -21,7 +21,6 @@
             <div class="actions">
                 <button class="edit_btn" onclick="window.location.href='{{ url_for('edit_contact', contact_id = contact.id) }}'">Редактировать</button>
                 <button class="delete_btn" onclick="openModal({{ contact.id }})">Удалить</button>
-                <!-- <button class="delete_btn" onclick="window.location.href='{{ url_for('delete_contact', contact_id = contact.id) }}'">Удалить</button> -->
             </div>
         </div>
         {% endfor %}
